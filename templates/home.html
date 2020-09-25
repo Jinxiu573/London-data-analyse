@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.15/"></script>
+    <style>
+        html, body, #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .title-div{
+            width: 600px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            background-color: #ac145a;
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+        .center-in-center{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <!--导航栏-->
+    <div style="width: 100%;background-color: #ac145a;height: 130px">
+        <div style="padding-top: 30px;padding-left: 100px">
+            <div style="float: left;"><img src="/static/image/cloud.svg" alt=""></div>
+            <span style="font-size: 40px;font-family: sans-serif;color: white;">&nbsp;London Air Quality Analysis</span>
+        </div>
+    </div>
+    <!--二层-->
+    <div style="background-color: #F1C3D0;width: 100%;height: 50px">
+        <Button class="btn btn-link" style="float:right;height: 48px;font-size: 20px;color: white">
+            <span class="glyphicon glyphicon-globe"></span>
+        </Button>
+    </div>
+    <!--地图-->
+    <div id="viewDiv" style="width: 100%;height: 80%;margin-top: -8px"></div>
+    <!--悬浮字-->
+    <div class="title-div center-in-center">
+        <a href="/login.html" id="start-title" style="color: white;font-size: 65px;font-weight: bold">Start Reading</a>
+    </div>
+</body>
+<script>
+    require([
+        "esri/Map",
+        "esri/views/MapView"
+    ], function(Map, MapView) {
+
+        var map = new Map({
+            basemap: "topo-vector"
+        });
+
+        var view = new MapView({
+            container: "viewDiv",
+            map: map,
+            center: [0.10000, 51.30000], // longitude, latitude
+            zoom: 13
+        });
+    });
+</script>
+</html>
